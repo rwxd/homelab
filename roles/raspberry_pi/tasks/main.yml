@@ -13,3 +13,9 @@
   apt:
     name: "*"
     state: latest
+
+- name: install software
+  apt:
+    pkg:
+      - vim
+      - git

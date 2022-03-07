@@ -1,0 +1,7 @@
+---
+- name: Generate ssh key for root
+  community.crypto.openssh_keypair:
+    path: /root/id_ed25519
+    type: ed25519
+    state: present
+  become: true
