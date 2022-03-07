@@ -1,0 +1,7 @@
+---
+max_auth_tries: 5
+
+deny_users:
+  - pi
+  - root
+  - ubuntu

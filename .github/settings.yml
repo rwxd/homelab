@@ -1,0 +1,10 @@
+---
+# These settings are synced to GitHub by https://probot.github.io/apps/settings/
+
+_extends: gh-templates:.github/common-settings.yml
+
+repository:
+  name: "homelab"
+  description: "Automation for homelab"
+  homepage: "https://rwxd.github.io/homelab/"
+  topics: "github, templating, ansible"

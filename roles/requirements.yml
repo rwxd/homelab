@@ -1,0 +1,4 @@
+---
+roles:
+  - name: jnv.unattended-upgrades
+    version: v1.12.1

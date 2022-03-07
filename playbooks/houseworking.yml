@@ -1,0 +1,20 @@
+---
+- name: Houseworking tasks
+  hosts: all
+  become: true
+  tasks:
+    - name: include vars
+      include_vars:
+        dir: "../vars/"
+
+    - name: Include role raspberry
+      include_role:
+        name: raspberry_pi
+
+    - name: Include role unattend-upgrades
+      include_role:
+        name: jnv.unattended-upgrades
+
+    - name: Set users
+      include_role:
+        name: user

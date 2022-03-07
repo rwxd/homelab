@@ -1,0 +1,48 @@
+---
+- name: disable password authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication"
+    line: "PasswordAuthentication no"
+    state: present
+    backup: yes
+
+- name: disable Root Login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin no"
+    state: present
+    backup: yes
+
+- name: "set max authentication tries -> {{ max_auth_tries }}"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^MaxAuthTries"
+    line: "MaxAuthTries {{ max_auth_tries }}"
+    state: present
+    backup: yes
+
+- name: enable public key authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PubkeyAuthentication"
+    line: "PubkeyAuthentication yes"
+    state: present
+    backup: yes
+
+- name: set authentication methods to only publickey
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^AuthenticationMethods"
+    line: "AuthenticationMethods publickey"
+    state: present
+    backup: yes
+
+- name: denying users
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^DenyUsers"
+    line: "DenyUsers {{ deny_users | join(' ') }}"
+    state: present
+    backup: yes
